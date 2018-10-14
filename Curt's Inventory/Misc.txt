@@ -1,0 +1,11 @@
+LEDs:
+	red x 3
+	green x 5
+	yellow x 4
+	blue x 5
+	photo resistor x 1
+	bit-shift register x 1
+	active buzzer x 1
+	push button x 6
+	breadboard x 1
+	full set of resistors
