@@ -2,5 +2,5 @@
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
     "port": "COM5",
-    "sketch": "temp and humidity example/Temp_And_Humidity.ino"
+    "sketch": "Temp_And_Humidity\\Temp_And_Humidity.ino"
 }
