@@ -1,6 +1,8 @@
 #include <LiquidCrystal.h>
 #include <dht.h>
 
+double ver = 2.0;
+int dtime = 3000;
 
 dht DHT;
 
@@ -14,7 +16,7 @@ int temp = 0;
 int hum = 0;
 int light = 0;
 
-int dtime = 3000;
+
 
 int readTemp(int DHTPIN){
   int tempC;
@@ -30,7 +32,7 @@ int readHum(int DHTPIN){
 }
 
 int readLight(int sensor_pin){
-  int sensorValue = 0;
+  int sensorValue = analogRead(sensor_pin);
   return sensorValue;
 }
 
@@ -39,7 +41,9 @@ void setup(){
   lcd.begin(16, 2);
   lcd.print("Welcome!");
   lcd.setCursor(0,1);
-  lcd.print("Weather V1");
+  lcd.print("Weather V");
+  lcd.setCursor(9, 1);
+  lcd.print(ver);
   delay(dtime);
 }
 
