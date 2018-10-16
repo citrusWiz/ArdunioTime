@@ -1,7 +1,7 @@
 #include <LiquidCrystal.h>
 #include <dht.h>
 
-double ver = 2.0;
+double ver = 3.0;
 int dtime = 3000;
 
 dht DHT;
@@ -11,6 +11,8 @@ const int ls_pin = A0;
 const int ledPin = 13;
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+const int btn_out = 10;
+const int btn_in = 9;
 
 int temp = 0;
 int hum = 0;
@@ -36,6 +38,14 @@ int readLight(int sensor_pin){
   return sensorValue;
 }
 
+bool testBtn(){
+  bool b;
+  digitalWrite(btn_out, HIGH);
+  b = digitalRead(btn_in);
+  digitalWrite(btn_out, LOW);
+  return b;
+}
+
 void setup(){
   Serial.begin(9600);
   lcd.begin(16, 2);
@@ -45,24 +55,13 @@ void setup(){
   lcd.setCursor(9, 1);
   lcd.print(ver);
   delay(dtime);
+
+  pinMode(btn_out, OUTPUT);
+  pinMode(btn_in, INPUT);
 }
 
 void loop()
 {
-  temp = readTemp(DHT11_PIN);
-  hum = readHum(DHT11_PIN);
-  light = readLight(ls_pin);
-
-  lcd.clear();
-  lcd.print("Temp = ");
-  lcd.print(temp);
-  delay(dtime);
-  lcd.clear();
-  lcd.print("humidity = ");
-  lcd.print(hum);
-  delay(dtime);
-  lcd.clear();
-  lcd.print("light = ");
-  lcd.print(light);
-  delay(dtime);
+  int opt = 0;
+  
 }
